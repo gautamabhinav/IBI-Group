@@ -1,0 +1,24 @@
+3)Ans:- Sharding is a technique used in MongoDB to horizontally partition data across multiple servers (also known as shards) to improve scalability and performance. It allows MongoDB databases to handle large amounts of data by distributing the data and the query workload across multiple machines. Sharding is particularly useful when a single server is no longer sufficient to handle the read and write operations of a rapidly growing dataset.
+
+How Sharding Works in MongoDB:
+
+Shard Key Selection:
+To enable sharding for a collection, you need to select a shard key. The shard key is a field or a set of fields chosen to determine how data is distributed across different shards. MongoDB uses the shard key's value to determine the target shard for each document. The goal is to select a shard key that evenly distributes the data and queries across the shards to prevent hotspots and ensure a balanced workload.
+
+Shard Cluster Setup:
+A MongoDB sharded cluster consists of several components:
+
+Mongos Routers: These are query routers that sit between the application and the shards. They direct the client requests to the appropriate shard based on the shard key.
+Config Servers: Config servers store the metadata about the cluster, including the shard key ranges and the mapping of chunks to shards.
+Shards: Shards are individual MongoDB instances or replica sets that store a portion of the data. Each shard is an independent MongoDB database.
+Data Distribution:
+When a document is inserted into the sharded collection, MongoDB uses the shard key value to determine which shard will store the document. It splits the shard key range into smaller chunks, and each chunk is assigned to a specific shard. As data grows or shrinks, MongoDB automatically balances the data distribution by moving chunks between shards.
+
+Query Routing:
+When an application sends a query to the cluster, it first connects to one of the mongos routers. The router examines the query to identify the relevant shard(s) based on the shard key. If the query includes the shard key in its criteria, the router can directly route the query to the specific shard(s). Otherwise, for scatter-gather queries that involve multiple shards, the router coordinates and gathers the results from the appropriate shards before returning the final result to the application.
+
+Chunk Migration and Balancing:
+As the data distribution changes over time due to new data or changes in the shard key, MongoDB automatically migrates chunks between shards to maintain a balanced workload. This process is called chunk migration or balancing. MongoDB's balancer periodically monitors the data distribution and moves chunks as needed to ensure that each shard's data size stays within a certain range (defined by the chunk size).
+
+By sharding data across multiple shards and distributing query load, MongoDB can achieve horizontal scaling and accommodate large datasets and high-throughput workloads effectively. However, designing an efficient shard key and monitoring the cluster's performance are crucial aspects to ensure the sharded MongoDB cluster operates optimally.
+

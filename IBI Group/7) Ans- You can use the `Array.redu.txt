@@ -1,0 +1,14 @@
+7) Ans:- You can use the `Array.reduce()` method to reverse the given array by accumulating the elements in reverse order. Here's how you can do it:
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+const reversedArr = arr.reduce((accumulator, currentValue) => {
+  // Prepend the current element to the accumulator
+  return [currentValue, ...accumulator];
+}, []);
+
+console.log(reversedArr); // Output: [5, 4, 3, 2, 1]
+```
+
+In the `reduce` function, we start with an empty array `[]` as the initial value for the `accumulator`. Then, in each iteration, we prepend the current element `currentValue` to the `accumulator` array using the spread operator (`...`). This way, the elements are accumulated in reverse order, effectively reversing the array. The final result is stored in the `reversedArr` variable.

@@ -1,0 +1,29 @@
+1) Ans:- Cookies, local storage, and session storage are three different mechanisms used in web development to store data on the client-side (i.e., within the user's browser). Each of them has its own purpose and characteristics. Here are the main differences between them:
+
+Scope and Lifetime:
+
+Cookies: Cookies are primarily used for storing small pieces of data that need to be sent back to the server with every HTTP request. They have an expiration date and can persist even after the browser is closed, depending on their expiration settings.
+Local Storage: Local storage provides a larger storage capacity compared to cookies and is meant for long-term data storage. Data stored in local storage remains even after the browser is closed and is available across browser sessions.
+Session Storage: Similar to local storage, session storage is used for client-side storage, but it has a shorter lifespan. Data stored in session storage is available only within the same browser tab or window and is cleared when the tab or window is closed.
+Capacity:
+
+Cookies: Cookies have a limited capacity of around 4KB, which is sufficient for small amounts of data, such as session identifiers or user preferences.
+Local Storage: Local storage offers a significantly larger capacity, usually around 5-10MB, making it suitable for storing larger amounts of data, such as offline caching or user-specific settings.
+Session Storage: Session storage also provides a capacity similar to local storage, but it is limited to the specific session (browser tab or window).
+Accessibility:
+
+Cookies: Cookies can be accessed both on the client side (JavaScript) and server side (HTTP headers).
+Local Storage: Data stored in local storage can be accessed and manipulated using JavaScript on the client side.
+Session Storage: Like local storage, session storage can also be accessed and modified using JavaScript on the client side.
+Automatic Sending to Server:
+
+Cookies: Cookies are automatically sent to the server with every HTTP request for the matching domain and path they belong to, which can add some overhead to each request.
+Local Storage: Data stored in local storage is not automatically sent to the server; it remains on the client side unless explicitly sent by the client via AJAX or other methods.
+Session Storage: Similar to local storage, data in session storage is not automatically sent to the server.
+Security:
+
+Cookies: Cookies can be susceptible to attacks like Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF) if not properly secured.
+Local Storage: Local storage is also subject to XSS attacks, but it is not as vulnerable to CSRF attacks since it does not automatically send data to the server.
+Session Storage: Session storage shares similar security characteristics with local storage.
+In summary, cookies are primarily used for small data that needs to be sent to the server with each request, while local storage and session storage are used for larger amounts of data meant for long-term or session-specific storage, respectively. Choosing the appropriate storage mechanism depends on the specific use case and requirements of your web application.
+

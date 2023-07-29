@@ -1,0 +1,20 @@
+9) Ans:-  The code will output the following to the console:
+
+```
+array 1: length=5 last=j,o,n,e,s
+array 2: length=5 last=j,o,n,e,s
+```
+
+Explanation:
+
+1. `var arr1 = "john".split('');`: This line initializes `arr1` as an array containing individual characters from the string "john", so `arr1` will be `["j", "o", "h", "n"]`.
+
+2. `var arr2 = arr1.reverse();`: This line assigns `arr1` to `arr2` and reverses the original array `arr1` in place. So, both `arr1` and `arr2` now reference the same reversed array, which is `["n", "h", "o", "j"]`.
+
+3. `var arr3 = "jones".split('');`: This line initializes `arr3` as an array containing individual characters from the string "jones", so `arr3` will be `["j", "o", "n", "e", "s"]`.
+
+4. `arr2.push(arr3);`: This line pushes the entire `arr3` array as a single element to the end of `arr2`. So, `arr2` becomes `["n", "h", "o", "j", ["j", "o", "n", "e", "s"]]`.
+
+5. `console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));`: This line logs information about `arr1`. `arr1.length` will be 5, and `arr1.slice(-1)` will return the last element of the array, which is `"n"`. So, the output will be: `array 1: length=5 last=n`.
+
+6. `console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));`: This line logs information about `arr2`. `arr2.length` will also be 5, and `arr2.slice(-1)` will return the last element of the array, which is `["j", "o", "n", "e", "s"]`. As the last element is an array, it will be displayed as a comma-separated string. So, the output will be: `array 2: length=5 last=j,o,n,e,s`.

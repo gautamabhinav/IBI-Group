@@ -1,0 +1,22 @@
+2) Ans:- 
+The output of the given code will be:
+5
+5
+5
+5
+5
+
+Explanation:
+
+In the provided code snippet, a for loop is used to iterate from i = 0 to i = 4 (inclusive) with i being incremented in each iteration. Within the loop, a setTimeout function is used to schedule the execution of an arrow function after 100 milliseconds.
+
+Now, let's break down what happens during the execution:
+
+The loop starts with i = 0. The setTimeout function is called, and the arrow function is scheduled to run after 100 milliseconds. However, the loop continues immediately, and i is incremented to 1.
+The loop continues with i = 1. Another setTimeout function is called, scheduling the arrow function after 100 milliseconds again. i is incremented to 2.
+The loop continues with i = 2, scheduling the arrow function once more. i is incremented to 3.
+The loop continues with i = 3, scheduling the arrow function again. i is incremented to 4.
+The loop continues with i = 4, scheduling the arrow function for the last time. i is incremented to 5.
+Now, the loop condition i < 5 becomes false (i is now equal to 5), and the loop ends. The arrow functions scheduled by the setTimeout start to execute. However, there is a closure over the variable i, and by the time the arrow functions execute, the value of i is 5.
+
+Therefore, when the arrow functions finally run, they all access the same variable i, which has the value 5 at that moment, and that's why the output shows 5 for all five iterations. The 100-millisecond delay added by setTimeout ensures that the loop has already completed its execution, and the value of i has become 5 by the time the arrow functions start executing.

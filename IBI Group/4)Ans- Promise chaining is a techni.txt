@@ -1,0 +1,64 @@
+4)Ans:- Promise chaining is a technique used in JavaScript to handle asynchronous operations using Promises. When dealing with asynchronous tasks that return Promises, chaining allows you to write cleaner and more readable code by connecting multiple asynchronous operations sequentially.
+
+In a Promise chain, each asynchronous operation returns a Promise, and you can attach .then() and .catch() methods to the Promise to handle the resolved (successful) and rejected (error) states respectively. Each .then() method can return a new Promise or a value, which will be passed on to the next .then() in the chain.
+
+Here's an example of Promise chaining to illustrate how it works:
+
+Let's say we have three asynchronous functions that simulate fetching data from a server with a delay using setTimeout. These functions return Promises:
+
+function fetchData1() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data 1");
+    }, 1000);
+  });
+}
+
+function fetchData2() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data 2");
+    }, 1500);
+  });
+}
+
+function fetchData3() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data 3");
+    }, 500);
+  });
+}
+
+
+Now, let's chain these functions to fetch data one after another:
+
+fetchData1()
+  .then((data1) => {
+    console.log("Fetched:", data1);
+    return fetchData2(); // Return the next Promise
+  })
+  .then((data2) => {
+    console.log("Fetched:", data2);
+    return fetchData3(); // Return the next Promise
+  })
+  .then((data3) => {
+    console.log("Fetched:", data3);
+    console.log("All data fetched!");
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
+
+Output:
+Fetched: Data 1
+Fetched: Data 2
+Fetched: Data 3
+All data fetched!
+
+In the above example, the fetchData1() is called first. When it resolves successfully, the first .then() block is executed, and it logs the fetched data (Data 1). Inside this .then() block, we return the result of calling fetchData2(), which returns a new Promise. This chaining of Promises allows us to call the next asynchronous function (fetchData2()) only when the previous one (fetchData1()) has completed successfully.
+
+The same pattern continues with fetchData2() and fetchData3(), and we use subsequent .then() blocks to log the fetched data and return the next Promise in the chain. Finally, when all the data is fetched successfully, the last .then() block logs the message "All data fetched!".
+
+If any of the Promises in the chain encounters an error, the .catch() block will be executed, handling any potential errors that occurred during the Promise chain.
